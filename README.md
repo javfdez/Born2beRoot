@@ -85,7 +85,7 @@ I decided to do the project **without the bonus** part, so I went with *guided* 
 
 After selecting *Guided - use entire disk and set up encrypted LVM*, I chose **SCSI3 (0, 0, 0) (sda) - 8.6 GB ATA VBOX HARDDISK**, to start partitioning my entire disk.
 
-![Untitled](Born2beRoot%20fd2ec214b16d43aca7944dff73f3724a/Untitled.png)
+![](https://github.com/Javiff8/Born2beRoot/blob/master/Screenshots/Untitled.png)
 
 *LVM or Logical Volume Manager (LVM), described in [wiki.ubuntu.com](https://wiki.ubuntu.com/Lvm), "It is a system of managing logical volumes, or filesystems, that is much more advanced and flexible than the traditional method of partitioning a disk into one or more segments and formatting that partition with a filesystem.".*
 
@@ -231,9 +231,9 @@ Now, to compile with the password policy, I changed the passwords of the **root 
 After all of this, if I could not access my VM from the host computer terminal because the network adapter was not correctly configured. There are two ways to get around this issue.
 
 1. Going in VirtualBox to:
-    
+
     VM settings → Network  → Advanced → Port Forwarding → New rule (top left corner):
-    
+
     - **Protocol**: TCP
     - **Host** **IP**: 127.0.0.1
     - **Host** **Port**: 4242
@@ -245,11 +245,11 @@ After this, using `ssh <myvmuser>@localhost -p 4242` (after booting up the VM an
 It is also posible to leave empty the Gest IP and Host IP fields and connect using `ssh <myvmuser>@127.0.0.1 -p 4242`
 
 1. Going to VirtualBox:
-    
+
     VM settings → Network  → Adapter 1 → Attached to → Bridged Adapter
-    
+
     After this, booting up the VM, logging in, and using `ip a`, showed the IP of the VM along with other stuff. Writing this IP in the same command line as before in the host terminal allows the connection after typing the VM user's password: `ssh <myvmuser>@<VMIP> -p 4242`.
-    
+
 
 ![Screen Shot 2021-09-24 at 6.53.01 PM.png](Born2beRoot%20fd2ec214b16d43aca7944dff73f3724a/Screen_Shot_2021-09-24_at_6.53.01_PM.png)
 
