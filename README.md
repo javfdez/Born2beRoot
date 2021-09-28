@@ -103,7 +103,7 @@ At the end of the process the following partitions were created:
 
 - swap - Here is the explanation [makeuseof.com](https://www.makeuseof.com/tag/swap-partition/) gives about swap partitions: "*The swap partition serves as overflow space for your RAM. If your RAM fills up completely, any additional applications will run off the swap partition rather than RAM. The swap partition serves as overflow space for your RAM. If your RAM fills up completely, any additional applications will run off the swap partition rather than RAM.*".
 
-![Untitled](Born2beRoot%20fd2ec214b16d43aca7944dff73f3724a/Untitled%201.png)
+![](https://github.com/Javiff8/Born2beRoot/blob/master/Screenshots/Untitled1.png)
 
 The boot process is explained in [oreilly.com](https://www.oreilly.com/library/view/essential-system-administration/0596003439/ch04s01.html) as it follows: "*Bootstrapping is the full name for the process of bringing a computer system to life and making it ready for use. The name comes from the fact that a computer needs its operating system to be able to do anything, but it must also get the operating system started all on its own, without having any of the services normally provided by the operating system to do so. Hence, it must “pull itself up by its own bootstraps.*
 
@@ -134,7 +134,7 @@ However, while configuring the package manager, I got this error message:
 
 So I left its configuration for later and chose **no** when asked to participate in the package usage survey. Then for the software selection, I unselected SSH server and **standard system utilities**. When asked about installing GRUB (a boot loader to load the OS when the VM starts) I selected **yes** and selected **/dev/sda**.
 
-![Untitled](Born2beRoot%20fd2ec214b16d43aca7944dff73f3724a/Untitled%202.png)
+![](https://github.com/Javiff8/Born2beRoot/blob/master/Screenshots/Untitled2.png)
 
 # Configure the machine
 
@@ -174,13 +174,13 @@ The OpenSSH Service allows to use the SSH network protocol, so I installed it us
 
 The difference between **ssh** and **sshd** is well explained in [secur.cc](https://www.secur.cc/what-is-the-difference-between-ssh-and-sshd/): "*sshd is a server (like a web server serving https) and SSH is a client (think of a web browser). The client/user authenticates itself against the server using the users credentials. and the server provides its own public key which can be fingerprinted, checked and remembered to by the client in order to prevent MITM attacks.*".
 
-![Untitled](Born2beRoot%20fd2ec214b16d43aca7944dff73f3724a/Untitled%203.png)
+![](https://github.com/Javiff8/Born2beRoot/blob/master/Screenshots/Untitled3.png)
 
-![Untitled](Born2beRoot%20fd2ec214b16d43aca7944dff73f3724a/Untitled%204.png)
+![](https://github.com/Javiff8/Born2beRoot/blob/master/Screenshots/Untitled4.png)
 
 After that, I checked that **ssh** was running using: `sudo service ssh status`.
 
-![Untitled](Born2beRoot%20fd2ec214b16d43aca7944dff73f3724a/Untitled%205.png)
+![](https://github.com/Javiff8/Born2beRoot/blob/master/Screenshots/Untitled5.png)
 
 ## Installing `UFW`
 
@@ -251,7 +251,7 @@ It is also posible to leave empty the Gest IP and Host IP fields and connect usi
     After this, booting up the VM, logging in, and using `ip a`, showed the IP of the VM along with other stuff. Writing this IP in the same command line as before in the host terminal allows the connection after typing the VM user's password: `ssh <myvmuser>@<VMIP> -p 4242`.
 
 
-![Screen Shot 2021-09-24 at 6.53.01 PM.png](Born2beRoot%20fd2ec214b16d43aca7944dff73f3724a/Screen_Shot_2021-09-24_at_6.53.01_PM.png)
+![](https://github.com/Javiff8/Born2beRoot/blob/master/Screenshots/Screen_Shot_2021-09-24_at_6.53.01_PM.png)
 
 # Make a crontab file
 
