@@ -156,11 +156,11 @@ Moreover, [tecmint.com](https://www.tecmint.com/difference-between-apt-and-aptit
 
 Lastly, `sudo` allows running a single command with root privileges, while `su` allows selecting which user will run the program, which normally is the root user when it is executed with no additional options and does not stop until `exit` is typed in the root shell.
 
-While on root after using `su` I executed `adduser <myuser> sudo` to add **<myuser>** to the **sudo** group so that user can use the `sudo` command.
+While on root after using `su` I executed `sudo adduser <myuser> sudo` to add **<myuser>** to the **sudo** group so that user can use the `sudo` command.
 
 After, I executed `sudo -v`, which made sudo update the user's cached credentials, authenticating the user's password if necessary.
 
-After I used `sudo addgroup <myusername42>`, to create the group **<myuser42>**, and `sudo adduser <myusername> <myusername42>` to add **<myuser>** to the group **<myuser42>**.
+After I used `sudo addgroup <myusername42>`, to create the group **<myuser42>**, and `sudo adduser <myusername> <myusername42>` to add **<myuser>** to the group **<myuser42>** and `sudo visudo` to add this line under the %sudo... line : `<myuser> ALL=(ALL) ALL` (to make my user have sudo permissions).
 
 To finish, I `sudo apt update` to update all the packages of the system.
 
@@ -261,11 +261,9 @@ It was mandatory to create a **[monitoring.sh](https://github.com/Javiff8/Born2b
 
 For this I used `sudo crontab -e` and added `*/10 * * * * /usr/local/bin/monitoring.sh`.
 
-I also added this lines to the `sudo visudo` file:
+I also added this line to the `sudo visudo` file:
 
 `<myuser> ALL=(ALL) NOPASSWD: /usr/local/bin/monitoring.sh` - To make the script without the sudo password.
-
-`<myuser> ALL=(ALL) ALL` - To make my user have sudo permissions.
 
 # [Signature.txt](https://github.com/Javiff8/Born2beRoot/blob/master/signature.txt)
 
@@ -374,3 +372,8 @@ AppArmor also provides MAC (Mandatory Access Control) security, allowing the sys
 `/usr/sbin/aa-status` - Checks the status of AppArmor.
 
 `ss -tulp` - Shows the net status, ports...
+
+# Status, grade and observations
+- Status: Finished.
+- Grade: This project was graded with a 100%.
+- Observations: If one of the above commands does not work properly, using `sudo` or launching them as root usually solves the problem. Depending on the Debian version you are using or if you are using other OS, these instructions could not be valid for you.
