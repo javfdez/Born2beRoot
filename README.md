@@ -186,7 +186,7 @@ After that, I checked that **ssh** was running using: `sudo service ssh status`.
 
 "*Uncomplicated Firewall (UFW) is a program for managing a [netfilter firewall](https://en.wikipedia.org/wiki/Netfilter) designed to be easy to use. It uses a [command-line interface](https://en.wikipedia.org/wiki/Command-line_interface) consisting of a small number of simple commands, and uses [iptables](https://en.wikipedia.org/wiki/Iptables) for configuration. UFW is available by default in all Ubuntu installations after 8.04 LTS.*". - [en.wikipedia.org](https://en.wikipedia.org/wiki/Uncomplicated_Firewall).
 
-Installing UFW and setting it up was as simple as executing `sudo apt instal ufw`, then activating and enabling it to launch on system start up via `sudo ufw enable` and opening the port 4242 (this was mandatory) using `sudo ufw allow 4242`. To check if it was working correctly, I used `sudo ufw status` and checked that the **4242** and **4242(v6)** *ports* were **allowed** **from anywhere**.
+Installing UFW and setting it up was as simple as executing `sudo apt install ufw`, then activating and enabling it to launch on system start up via `sudo ufw enable` and opening the port 4242 (this was mandatory) using `sudo ufw allow 4242`. To check if it was working correctly, I used `sudo ufw status` and checked that the **4242** and **4242(v6)** *ports* were **allowed** **from anywhere**.
 
 If I used  `sudo ufw status verbose`, I could see that Default: outgoing was allowed, so I also used `sudo ufw default deny outgoing` to deny it because it was also mandatory.
 
