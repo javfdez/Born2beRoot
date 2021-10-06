@@ -164,32 +164,6 @@ After I used `sudo addgroup <myusername42>`, to create the group **<myuser42>**,
 
 To finish, I `sudo apt update` to update all the packages of the system.
 
-## Installing `ssh`
-
-"*SSH, also known as Secure Shell or Secure Socket Shell, is a network protocol that gives users, particularly system administrators, a secure way to access a computer over an unsecured network. In addition to providing secure network services, SSH refers to the suite of utilities that implement the SSH protocol. Secure Shell provides strong password authentication and public key authentication, as well as encrypted data communications between two computers connecting over an open network, such as the internet. In addition to providing strong encryption, SSH is widely used by network administrators for managing systems and applications remotely, enabling them to log in to another computer over a network, execute commands and move files from one computer to another.*" - [searchsecurity.techtarget.com](https://searchsecurity.techtarget.com/definition/Secure-Shell).
-
-In this part, I installed the *OpenSSH Service* which, as described in the [openssh.com](http://openssh.com), "I*s the premier connectivity tool for remote login with the SSH protocol. It encrypts all traffic to eliminate eavesdropping, connection hijacking, and other attacks. In addition, OpenSSH provides a large suite of secure tunneling capabilities, several authentication methods, and sophisticated configuration options.*".
-
-The OpenSSH Service allows to use the SSH network protocol, so I installed it using `sudo apt install openssh-server`. Then I used nano to edit the **sshd_config** file to change and uncoment the **Port** from *22* to **4242** and **PermitRootLogin** from *prohibit-password* to **no** so that it will be impossible to connect using **ssh** as root (this was mandatory) via `sudo nano /etc/ssh/sshd_config`. I also changed the **Port** from *22* to **4242** in the **ssh_config** file following the same procedure but this time using `sudo nano /etc/ssh/ssh_config`.
-
-The difference between **ssh** and **sshd** is well explained in [secur.cc](https://www.secur.cc/what-is-the-difference-between-ssh-and-sshd/): "*sshd is a server (like a web server serving https) and SSH is a client (think of a web browser). The client/user authenticates itself against the server using the users credentials. and the server provides its own public key which can be fingerprinted, checked and remembered to by the client in order to prevent MITM attacks.*".
-
-![](https://github.com/Javiff8/Born2beRoot/blob/master/Screenshots/Untitled%203.png)
-
-![](https://github.com/Javiff8/Born2beRoot/blob/master/Screenshots/Untitled%204.png)
-
-After that, I checked that **ssh** was running using: `sudo service ssh status`.
-
-![](https://github.com/Javiff8/Born2beRoot/blob/master/Screenshots/Untitled%205.png)
-
-## Installing `UFW`
-
-"*Uncomplicated Firewall (UFW) is a program for managing a [netfilter firewall](https://en.wikipedia.org/wiki/Netfilter) designed to be easy to use. It uses a [command-line interface](https://en.wikipedia.org/wiki/Command-line_interface) consisting of a small number of simple commands, and uses [iptables](https://en.wikipedia.org/wiki/Iptables) for configuration. UFW is available by default in all Ubuntu installations after 8.04 LTS.*". - [en.wikipedia.org](https://en.wikipedia.org/wiki/Uncomplicated_Firewall).
-
-Installing UFW and setting it up was as simple as executing `sudo apt install ufw`, then activating and enabling it to launch on system start up via `sudo ufw enable` and opening the port 4242 (this was mandatory) using `sudo ufw allow 4242`. To check if it was working correctly, I used `sudo ufw status` and checked that the **4242** and **4242(v6)** *ports* were **allowed** **from anywhere**.
-
-If I used  `sudo ufw status verbose`, I could see that Default: outgoing was allowed, so I also used `sudo ufw default deny outgoing` to deny it because it was also mandatory.
-
 ## Configuring `sudo`
 
 To configure `sudo`, I started by creating a log directory to store the log file that would archive each action performed using sudo. by doing `sudo mkdir /var/log/sudo`. After this, I used `sudo visudo` to edit the **sudoers.tmp** file and added:
@@ -225,6 +199,32 @@ Then, I edited the *common-password* file under `/etc/pam.d/common-password` wit
 After this settings, the resulting line was this: `password requisite pam_pwqiality.so retry=3 minlen=10 ucredit=-1 dcredit=-1 maxrepeat=3 reject_username difok=7 enforce_for_root`
 
 Now, to compile with the password policy, I changed the passwords of the **root user** and the **user** created during installation using `passwd` and `sudo passwd` respectively. I also updated their max days and min days manually using `sudo chage -M 30 <user>` and `sudo chage -m 2 <user>` (user being <myuser> and root).
+
+## Installing `ssh`
+
+"*SSH, also known as Secure Shell or Secure Socket Shell, is a network protocol that gives users, particularly system administrators, a secure way to access a computer over an unsecured network. In addition to providing secure network services, SSH refers to the suite of utilities that implement the SSH protocol. Secure Shell provides strong password authentication and public key authentication, as well as encrypted data communications between two computers connecting over an open network, such as the internet. In addition to providing strong encryption, SSH is widely used by network administrators for managing systems and applications remotely, enabling them to log in to another computer over a network, execute commands and move files from one computer to another.*" - [searchsecurity.techtarget.com](https://searchsecurity.techtarget.com/definition/Secure-Shell).
+
+In this part, I installed the *OpenSSH Service* which, as described in the [openssh.com](http://openssh.com), "I*s the premier connectivity tool for remote login with the SSH protocol. It encrypts all traffic to eliminate eavesdropping, connection hijacking, and other attacks. In addition, OpenSSH provides a large suite of secure tunneling capabilities, several authentication methods, and sophisticated configuration options.*".
+
+The OpenSSH Service allows to use the SSH network protocol, so I installed it using `sudo apt install openssh-server`. Then I used nano to edit the **sshd_config** file to change and uncoment the **Port** from *22* to **4242** and **PermitRootLogin** from *prohibit-password* to **no** so that it will be impossible to connect using **ssh** as root (this was mandatory) via `sudo nano /etc/ssh/sshd_config`. I also changed the **Port** from *22* to **4242** in the **ssh_config** file following the same procedure but this time using `sudo nano /etc/ssh/ssh_config`.
+
+The difference between **ssh** and **sshd** is well explained in [secur.cc](https://www.secur.cc/what-is-the-difference-between-ssh-and-sshd/): "*sshd is a server (like a web server serving https) and SSH is a client (think of a web browser). The client/user authenticates itself against the server using the users credentials. and the server provides its own public key which can be fingerprinted, checked and remembered to by the client in order to prevent MITM attacks.*".
+
+![](https://github.com/Javiff8/Born2beRoot/blob/master/Screenshots/Untitled%203.png)
+
+![](https://github.com/Javiff8/Born2beRoot/blob/master/Screenshots/Untitled%204.png)
+
+After that, I checked that **ssh** was running using: `sudo service ssh status`.
+
+![](https://github.com/Javiff8/Born2beRoot/blob/master/Screenshots/Untitled%205.png)
+
+## Installing `UFW`
+
+"*Uncomplicated Firewall (UFW) is a program for managing a [netfilter firewall](https://en.wikipedia.org/wiki/Netfilter) designed to be easy to use. It uses a [command-line interface](https://en.wikipedia.org/wiki/Command-line_interface) consisting of a small number of simple commands, and uses [iptables](https://en.wikipedia.org/wiki/Iptables) for configuration. UFW is available by default in all Ubuntu installations after 8.04 LTS.*". - [en.wikipedia.org](https://en.wikipedia.org/wiki/Uncomplicated_Firewall).
+
+Installing UFW and setting it up was as simple as executing `sudo apt install ufw`, then activating and enabling it to launch on system start up via `sudo ufw enable` and opening the port 4242 (this was mandatory) using `sudo ufw allow 4242`. To check if it was working correctly, I used `sudo ufw status` and checked that the **4242** and **4242(v6)** *ports* were **allowed** **from anywhere**.
+
+If I used  `sudo ufw status verbose`, I could see that Default: outgoing was allowed, so I also used `sudo ufw default deny outgoing` to deny it because it was also mandatory.
 
 ## Network adapter configuration
 
