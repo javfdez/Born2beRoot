@@ -77,7 +77,7 @@ There are two main types of partitions: *logical* or *primary*, but... what is t
 "*Logical partition and primary partition are two common partition types.*
 
 - The *primary partition is the hard disk partition where both OS and other data can be stored, and it is the only partition that can be set active for BIOS to locate. In other words, you can only boot from a primary partition.* (The number of primary partitions that can be created is **limited**).
-- *The logical partition is also called LPAR, it is a logical segmentation of a mainframe's memory and other resources that allows it to run its own copy of the operating system and associated applications. (*The number of logical partitions that can be created is **unlimited**).
+- The logical partition is also called LPAR, it is a logical segmentation of a mainframe's memory and other resources that allows it to run its own copy of the operating system and associated applications. (The number of logical partitions that can be created is **unlimited**).
 
 *There is no difference between the two kinds of partitions in the ability to store data.*"
 
