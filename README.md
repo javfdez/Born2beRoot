@@ -2,8 +2,6 @@
 
 # What is Born2beRoot?
 
-*My second project at 42.*
-
 This project aims to introduce the students to virtualization by creating their first machine in VirtualBox under specific instructions.
 
 **Virtualization**, as explained in [ibm.com](https://www.ibm.com/cloud/learn/virtualization-a-complete-guide), "*uses software to create an abstraction layer over computer hardware that allows the hardware elements of a single computer—processors, memory, storage and more—to be divided into multiple virtual computers, commonly called virtual machines (VMs). Each VM runs its own operating system (OS) and behaves like an independent computer, even though it is running on just a portion of the actual underlying computer hardware.*".
