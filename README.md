@@ -194,7 +194,7 @@ Then, I edited the *common-password* file under `/etc/pam.d/common-password` wit
 - **difok=7** - The password must have at least 7 characters that are not part of the former password (does not apply to the root password).
 - **enforce_for_root** - The root password has to comply with this policy.
 
-After this settings, the resulting line was this: `password requisite pam_pwqiality.so retry=3 minlen=10 ucredit=-1 dcredit=-1 maxrepeat=3 reject_username difok=7 enforce_for_root`
+After this settings, the resulting line was this: `password requisite pam_pwqiality.so difok=7 enforce_for_root retry=3 minlen=10 ucredit=-1 dcredit=-1 maxrepeat=3 reject_username`
 
 Now, to compile with the password policy, I changed the passwords of the **root user** and the **user** created during installation using `passwd` and `sudo passwd` respectively. I also updated their max days and min days manually using `sudo chage -M 30 <user>` and `sudo chage -m 2 <user>` (user being <myuser> and root).
 
