@@ -373,5 +373,5 @@ AppArmor also provides MAC (Mandatory Access Control) security, allowing the sys
 
 # Status, grade and observations
 - Status: Finished.
-- Grade: This project was graded with a 100%.
+- Grade: [![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/javferna/born_2_be_root)](https://github.com/JaeSeoKim/badge42)
 - Observations: If one of the above commands does not work properly, using `sudo` or launching them as root usually solves the problem. Depending on the Debian version you are using or if you are using other OS, these instructions could not be valid for you.
